@@ -19,5 +19,16 @@ const router = createRouter({
 })
 
 // 3. buat guard (require auth) supaya gk bisa asal login
+router.beforeEach((to, from, next) => {
+    const user = useUserStore()
+    if (!user.isLoggedIn) {
+        user.restoreSession()
+    }
 
+    if(to.meta.requiresAuth && !useUserStore.isLoggedIn) {
+        next("/login")
+    } else {
+        next()
+    }
+})
 export default router
