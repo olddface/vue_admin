@@ -15,7 +15,7 @@ const routes = [
 // 2. ROUTER buat export route supaya bisa di pake
 const router = createRouter({
     history: createWebHistory(),
-    routes // variable routes di pass di sini
+    routes, // variable routes(yang di atas) di pass di sini
 })
 
 // 3. buat guard (require auth) supaya gk bisa asal login
