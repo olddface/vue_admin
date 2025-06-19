@@ -45,6 +45,8 @@ const password = ref('')
 const user = useUserStore()
 const router = useRouter()
 
+
+// handle login... when you wanna login and press the button
 function handleLogin() {
     if (email.value && password.value) {
         console.log("Logging in with:", email.value, password.value)
