@@ -12,7 +12,7 @@ import { useRouter } from 'vue-router';
 
 const user = useUserStore()
 const router = useRouter()
-
+// fix to make logout have route
 const Logout = () => {
   user.logout()
   router.push("/login")
