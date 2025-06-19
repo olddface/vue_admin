@@ -47,7 +47,9 @@ const router = useRouter()
 
 function handleLogin() {
     if (email.value && password.value) {
+        console.log("Logging in with:", email.value, password.value)
         user.login(email.value)
+        user.currentStatus()
         router.push("/")
     }
 }

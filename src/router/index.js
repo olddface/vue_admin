@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
         user.restoreSession()
     }
 
-    if(to.meta.requiresAuth && !useUserStore.isLoggedIn) {
+    if(to.meta.requiresAuth && !user.isLoggedIn) {
         next("/login")
     } else {
         next()
