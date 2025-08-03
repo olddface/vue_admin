@@ -38,21 +38,32 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '@/store/userStore';
+import api from '@/lib/axios';
 
 const email = ref('')
-const password = ref('')
+const password = ref('')    
 
 const user = useUserStore()
 const router = useRouter()
 
 
 // handle login... when you wanna login and press the button
-function handleLogin() {
-    if (email.value && password.value) {
-        console.log("Logging in with:", email.value, password.value)
-        user.login(email.value)
-        user.currentStatus()
+async function handleLogin() {
+    try {
+        const res = await api.post('/login', {
+            email: email.value,
+            password: password.value
+        })
+
+        const token = res.data.token
+        localStorage.setItem("token", token)
+
+        const me = await api.get("/me")
+        user.setUser(me.data)
         router.push("/")
+    } catch (err){
+        alert("login failed: ")
+        console.error("login err: ", JSON.stringify(err))
     }
 }
 </script>
