@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-white text-2xl w-full">Welcome, {{ user.name }}</h1>
+    <h1 class="text-white text-2xl w-full">Welcome, {{ user.user.name }}</h1>
     <div class="mt-3 text-white"> is login? {{ user.isLoggedIn ? "yes" : "no"}} </div>
   </div>
 </template>
